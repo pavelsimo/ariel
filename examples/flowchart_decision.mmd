@@ -1,0 +1,17 @@
+flowchart TD
+    Start([System Issue Detected]) --> CheckLog{Check Server Logs}
+    
+    CheckLog -->|Error 500| DBCheck{Is DB Online?}
+    CheckLog -->|Error 404| Routing[Check Router Config]
+    CheckLog -->|Timeout| Network((Network Outage))
+    
+    DBCheck -->|Yes| AppBug[Investigate App Bug]
+    DBCheck -->|No| RestartDB>Restart Database]
+    
+    RestartDB --> Verify[Verify Connection]
+    Verify -->|Fails| Escalate[[Escalate to DBA]]
+    Verify -->|Succeeds| Resolve{{Resolve Incident}}
+    
+    AppBug --> Resolve
+    Routing --> Resolve
+    Network --> Resolve

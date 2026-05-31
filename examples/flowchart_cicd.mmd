@@ -1,0 +1,21 @@
+flowchart LR
+    %% A typical CI/CD Pipeline
+    Developer([Developer]) -->|git push| GitHub(GitHub Repo)
+    
+    subgraph CI [Continuous Integration]
+        GitHub -.->|webhook| Actions{GitHub Actions}
+        Actions --> Build[Build App]
+        Actions --> Test[Run Tests]
+        Actions --> Lint[Lint Code]
+        
+        Build --> Docker[(Docker Image)]
+        Test --> Result((Pass or Fail))
+    end
+    
+    subgraph CD [Continuous Deployment]
+        Docker ==> Deploy[Deploy to Staging]
+        Deploy --> E2E[E2E Tests]
+        E2E -->|success| Prod[Deploy to Production]
+    end
+    
+    Result -.->|status| Developer

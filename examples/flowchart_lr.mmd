@@ -1,0 +1,6 @@
+flowchart LR
+    A[Input] --> B(Process)
+    B --> C{Decision}
+    C -->|Yes| D[Output]
+    C -->|No| E[Retry]
+    E --> B

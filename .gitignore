@@ -1,0 +1,56 @@
+# Node / TypeScript
+node_modules/
+npm-debug.log*
+
+# Python (legacy caches)
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+*.egg
+.eggs/
+
+# Distribution / packaging
+dist/
+build/
+wheels/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Testing & coverage
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Type checking
+.mypy_cache/
+
+# Linting
+.ruff_cache/
+
+# Editors
+.idea/
+.vscode/
+.antigravitycli/
+*.swp
+*.swo
+.DS_Store
+
+# Docs output
+dist/docs-site/
+
+# Rendered output (manim)
+media/
+*.mp4
+*.gif
+*.webm
+
+# Re-include project files that the user's global ignore would drop
+# (~/.config/git/ignore contains `build*` and `__init__.py`).
+!**/__init__.py
+!scripts/build-docs-site.mjs

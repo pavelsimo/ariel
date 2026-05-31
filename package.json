@@ -1,0 +1,55 @@
+{
+  "name": "ariel-mermaid",
+  "version": "0.1.0",
+  "description": "animate Mermaid diagrams as images and videos",
+  "type": "module",
+  "license": "MIT",
+  "author": "pavelsimo",
+  "homepage": "https://pavelsimo.github.io/ariel",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavelsimo/ariel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pavelsimo/ariel/issues"
+  },
+  "bin": {
+    "ariel": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "node -e \"fs.rmSync('dist',{recursive:true,force:true})\" && tsc -p tsconfig.json",
+    "ci": "npm run fmt-check && npm run lint && npm run test && npm run build && npm pack --dry-run",
+    "dev": "tsx src/cli.ts",
+    "docs": "node scripts/build-docs-site.mjs",
+    "fmt": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"*.json\" \"*.js\" \"*.ts\"",
+    "fmt-check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\" \"*.json\" \"*.js\" \"*.ts\"",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@dagrejs/dagre": "^3.0.0",
+    "commander": "^15.0.0",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "@vitest/coverage-v8": "^4.1.7",
+    "eslint": "^9.39.1",
+    "prettier": "^3.6.2",
+    "tsx": "^4.22.4",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.0",
+    "vitest": "^4.1.0"
+  }
+}
